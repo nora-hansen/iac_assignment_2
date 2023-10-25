@@ -27,6 +27,8 @@ resource "azurerm_key_vault" "kv" {
       "Backup", "Delete", "DeleteSAS", "Get", "GetSAS", "List", "ListSAS", "Purge", "Recover", "RegenerateKey", "Restore", "Set", "SetSAS", "Update"
     ]
   }
+
+    tags = local.common_tags
 }
 
 resource "azurerm_key_vault_secret" "sa_accesskey" {
@@ -36,6 +38,7 @@ resource "azurerm_key_vault_secret" "sa_accesskey" {
   depends_on = [
     azurerm_storage_account.sa
   ]
+  tags = local.common_tags
 }
 
 resource "azurerm_key_vault_secret" "vm_password" {
@@ -45,4 +48,5 @@ resource "azurerm_key_vault_secret" "vm_password" {
   depends_on = [
     random_password.password
   ]
+  tags = local.common_tags
 }

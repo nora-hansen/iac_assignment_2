@@ -95,3 +95,25 @@ variable "vm_username" {
   default     = "demoadmin"
   description = "Username for the virtual machine"
 }
+
+//
+//  Tags
+//
+
+variable "company"  {
+  type = string
+  default = "OperaTerraAS"
+  description = "Company name"
+}
+
+variable "project"  {
+  type = string
+  default = "ci_cd_workflow"
+  description = "Project name"
+}
+
+variable "env"  {
+  type = string
+  default = "default"
+  description = "Environment"
+}
