@@ -111,9 +111,3 @@ variable "project"  {
   default = "ci_cd_workflow"
   description = "Project name"
 }
-
-variable "env"  {
-  type = string
-  default = "default"
-  description = "Environment"
-}
