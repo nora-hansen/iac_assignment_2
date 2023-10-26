@@ -38,8 +38,21 @@ jobs:
         run: terraform validate
 
       - name: 'Tflint'
-        id: tflint
-        run: tflint
+        uses: terraform-linters/setup-tflint@v3
+        with:
+          tflint_version: v0.44.1
+
+      - name: Show version
+        run: tflint --version
+    
+      - name: Init TFLint
+        run: tflint --init
+        env:
+          # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
+          GITHUB_TOKEN: ${{ github.token }}
+    
+      - name: Run TFLint
+        run: tflint -f compact
 
   merge-branch:
     name: 'Dev merge'
