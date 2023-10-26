@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "3.75.0"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.5.1"
+    }
   }
   # backend "azurerm" {
   #   resource_group_name  = "rg-backend-tfstate"
@@ -20,4 +24,8 @@ provider "azurerm" {
       recover_soft_deleted_key_vaults = true
     }
   }
+}
+
+provider "random" {
+  # Configuration options
 }

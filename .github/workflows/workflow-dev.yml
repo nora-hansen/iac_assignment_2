@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - 'main'
+      - 'staging'
     paths:
       - 'iac_assignment_2/**'
   workflow_dispatch:
@@ -27,4 +28,19 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: 'Terraform fmt'
+        id: fmt
+        run: terraform fmt
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: 'Terraform validate'
+        id: validate
+        run: terraform validate
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: 'Tflint'
+        id: tflint
+        run: tflint
         working-directory: ${{ env.WORKING_DIR }}
