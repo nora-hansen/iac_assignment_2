@@ -4,13 +4,14 @@ on:
   push:
     branches-ignore:
       - 'main'
+      - 'dev'
       - 'staging'
     paths:
       - 'iac_assignment_2/**'
   workflow_dispatch:
 
 jobs:
-  terraform:
+  quality-assurance:
     name: 'Development'
     runs-on: ubuntu-latest
 
@@ -44,3 +45,23 @@ jobs:
         id: tflint
         run: tflint
         working-directory: ${{ env.WORKING_DIR }}
+  merge-branch:
+    name: 'Dev merge'
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      WORKING_DIR: ./iac_assignment_2
+
+    steps:
+      - name: Merge with dev
+        uses: devmasx/merge-branch@master
+
+        with:
+          type: now
+          from_branch: ${{ GITHUB.ref_name }}
+          target_branch: dev
+          github_token: ${{ secrets.GITHUB_TOKEN }}
