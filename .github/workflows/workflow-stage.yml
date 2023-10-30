@@ -70,5 +70,5 @@ jobs:
         with:
           type: now
           from_branch: ${{ GITHUB.ref_name }}
-          target_branch: dev
+          target_branch: stage
           github_token: ${{ secrets.GITHUB_TOKEN }}
