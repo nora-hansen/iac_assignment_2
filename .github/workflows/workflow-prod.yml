@@ -1,4 +1,4 @@
-name: Development
+name: Production
 
 on:
   push:
@@ -6,11 +6,12 @@ on:
       - 'main'
       - 'dev'
       - 'staging'
+      - 'prod'
   workflow_dispatch:
 
 jobs:
   quality-assurance:
-    name: 'Development'
+    name: 'Production'
     runs-on: ubuntu-latest
 
     env:
@@ -53,7 +54,7 @@ jobs:
         run: tflint -f compact
 
   merge-branch:
-    name: 'Dev merge'
+    name: 'Prod merge'
     needs: quality-assurance
     runs-on: ubuntu-latest
 
@@ -62,16 +63,13 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-  
-    permissions:
-      contents: write
 
     steps:
-      - name: Merge with dev
+      - name: Merge with prod
         uses: devmasx/merge-branch@master
 
         with:
           type: now
           from_branch: ${{ GITHUB.ref_name }}
-          target_branch: dev
+          target_branch: prod
           github_token: ${{ secrets.GITHUB_TOKEN }}
