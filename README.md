@@ -1,2 +1,6 @@
 # Obligatory Assignment 02
-## README IN PROGRESS
+## Structure or sumthin
+This repository contains the structure of a Terraform yhehe. It is module07 pretty much.
+
+## Branches
+3 of em. 
