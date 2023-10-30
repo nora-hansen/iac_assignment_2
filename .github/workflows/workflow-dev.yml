@@ -6,8 +6,6 @@ on:
       - 'main'
       - 'dev'
       - 'staging'
-    paths:
-      - 'iac_assignment_2/**'
   workflow_dispatch:
 
 jobs:
