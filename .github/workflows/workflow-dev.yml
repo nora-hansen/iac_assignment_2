@@ -29,14 +29,17 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
+        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform fmt'
         id: fmt
         run: terraform fmt
+        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform validate'
         id: validate
         run: terraform validate
+        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Tflint'
         uses: terraform-linters/setup-tflint@v3
@@ -54,9 +57,11 @@ jobs:
     
       - name: Run TFLint
         run: tflint -f compact
+        working-directory: ${{ env.WORKING_DIR }}
 
   merge-branch:
     name: 'Dev merge'
+    needs: quality-assurance
     runs-on: ubuntu-latest
 
     env:
