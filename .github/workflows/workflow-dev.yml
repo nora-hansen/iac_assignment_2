@@ -6,8 +6,6 @@ on:
       - 'main'
       - 'dev'
       - 'staging'
-    paths:
-      - 'iac_assignment_2/**'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +18,6 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      WORKING_DIR: ./iac_assignment_2
       
     steps:
       - name: 'Checkout'
@@ -29,17 +26,14 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform fmt'
         id: fmt
         run: terraform fmt
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform validate'
         id: validate
         run: terraform validate
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Tflint'
         uses: terraform-linters/setup-tflint@v3
@@ -57,7 +51,6 @@ jobs:
     
       - name: Run TFLint
         run: tflint -f compact
-        working-directory: ${{ env.WORKING_DIR }}
 
   merge-branch:
     name: 'Dev merge'
@@ -69,7 +62,9 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      WORKING_DIR: ./iac_assignment_2
+  
+    permissions:
+      contents: write
 
     steps:
       - name: Merge with dev
