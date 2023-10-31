@@ -27,6 +27,9 @@ jobs:
         id: init
         run: terraform init
 
+      - name: 'Terraform workspace select or create dev'
+        run:  terraform workspace select dev || terraform workspace new dev
+
       - name: 'Terraform fmt'
         id: fmt
         run: terraform fmt

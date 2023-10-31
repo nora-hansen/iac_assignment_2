@@ -29,6 +29,10 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
+
+      - name: 'Terraform workspace select or create dev'
+        id: select
+        run:  terraform workspace select dev || terraform workspace new dev
         
       - name: 'Terraform plan'
         id: plan
