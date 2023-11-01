@@ -55,27 +55,3 @@ jobs:
     
       - name: Run TFLint
         run: tflint -f compact
-
-  merge-branch:
-    name: 'Stage merge'
-    needs: quality-assurance
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-
-    steps:
-      - name: Merge with stage
-        uses: devmasx/merge-branch@master
-
-        with:
-          type: now
-          from_branch: ${{ GITHUB.ref_name }}
-          target_branch: stage
-          github_token: ${{ secrets.GITHUB_TOKEN }}
