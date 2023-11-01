@@ -28,6 +28,9 @@ jobs:
         id: init
         run: terraform init
 
+      - name: 'Terraform workspace select or create prod'
+        run:  terraform workspace select prod || terraform workspace new prod
+
       - name: 'Terraform fmt'
         id: fmt
         run: terraform fmt
@@ -57,6 +60,9 @@ jobs:
     name: 'Prod merge'
     needs: quality-assurance
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}

@@ -1,14 +1,14 @@
-name: Development_merge
+name: Staging_merge
 
 on:
   push:
     branches:
-      - 'dev'
+      - 'stage'
   workflow_dispatch:
 
 jobs:
   quality-assurance:
-    name: 'Development merge'
+    name: 'Staging merge'
     runs-on: ubuntu-latest
 
     env:
@@ -25,9 +25,9 @@ jobs:
         id: init
         run: terraform init
 
-      - name: 'Terraform workspace select or create dev'
+      - name: 'Terraform workspace select or create stage'
         id: select
-        run:  terraform workspace select dev || terraform workspace new dev
+        run:  terraform workspace select stage || terraform workspace new stage
         
       - name: 'Terraform plan'
         id: plan
