@@ -1,0 +1,38 @@
+name: Staging_merge
+
+on:
+  push:
+    branches:
+      - 'stage'
+  workflow_dispatch:
+
+jobs:
+  quality-assurance:
+    name: 'Staging merge'
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: 'Terraform init'
+        id: init
+        run: terraform init
+
+      - name: 'Terraform workspace select or create stage'
+        id: select
+        run:  terraform workspace select stage || terraform workspace new stage
+        
+      - name: 'Terraform plan'
+        id: plan
+        run: terraform plan
+
+      - name: 'Terraform apply'
+        id: apply
+        run: terraform apply --auto-approve
