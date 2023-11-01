@@ -10,6 +10,8 @@ jobs:
   quality-assurance:
     name: 'Staging merge'
     runs-on: ubuntu-latest
+    environment:
+      production
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
