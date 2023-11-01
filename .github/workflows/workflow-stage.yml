@@ -6,6 +6,7 @@ on:
       - 'main'
       - 'dev'
       - 'staging'
+      - 'prod'
   workflow_dispatch:
 
 jobs:
@@ -26,6 +27,9 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
+
+      - name: 'Terraform workspace select or create stage'
+        run:  terraform workspace select stage || terraform workspace new stage
 
       - name: 'Terraform fmt'
         id: fmt
