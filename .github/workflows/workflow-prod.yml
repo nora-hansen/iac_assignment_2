@@ -14,7 +14,7 @@ jobs:
     name: 'Production'
     runs-on: ubuntu-latest
     environment:
-      name: production
+      production
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -29,6 +29,9 @@ jobs:
       - name: 'Terraform init'
         id: init
         run: terraform init
+
+      - name: 'Terraform workspace select or create prod'
+        run:  terraform workspace select prod || terraform workspace new prod
 
       - name: 'Terraform fmt'
         id: fmt
