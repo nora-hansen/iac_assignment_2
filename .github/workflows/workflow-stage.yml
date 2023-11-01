@@ -61,6 +61,9 @@ jobs:
     needs: quality-assurance
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
