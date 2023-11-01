@@ -1,15 +1,17 @@
-name: Development_merge
+name: Production_merge
 
 on:
   push:
     branches:
-      - 'dev'
+      - 'prod'
   workflow_dispatch:
 
 jobs:
   quality-assurance:
-    name: 'Development merge'
+    name: 'Staging merge'
     runs-on: ubuntu-latest
+    environment:
+        production
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -25,9 +27,9 @@ jobs:
         id: init
         run: terraform init
 
-      - name: 'Terraform workspace select or create dev'
+      - name: 'Terraform workspace select or create stage'
         id: select
-        run:  terraform workspace select dev || terraform workspace new dev
+        run:  terraform workspace select stage || terraform workspace new stage
         
       - name: 'Terraform plan'
         id: plan
