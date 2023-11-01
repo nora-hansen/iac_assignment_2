@@ -1,14 +1,9 @@
 name: Development_merge
 
 on:
-  workflow_run:
-    workflows: [Development]
-    branches-ignore:
-      - 'main'
+  push:
+    branches:
       - 'dev'
-      - 'staging'
-    types:
-      - completed
   workflow_dispatch:
 
 jobs:
