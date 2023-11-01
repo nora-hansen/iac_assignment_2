@@ -8,10 +8,10 @@ on:
 
 jobs:
   quality-assurance:
-    name: 'Staging merge'
+    name: 'Production merge'
     runs-on: ubuntu-latest
     environment:
-      production
+        production
 
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
