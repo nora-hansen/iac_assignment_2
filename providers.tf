@@ -14,7 +14,7 @@ terraform {
     resource_group_name  = "rg-backend-tfstate"
     storage_account_name = "sabetfs3a9npz46p2"
     container_name       = "tfstate"
-    key                  = "infra-${local.workspace_suffix}.terraform.tfstate"
+    key                  = "infra-${terraform.workspace}.terraform.tfstate"
   }
 }
 
