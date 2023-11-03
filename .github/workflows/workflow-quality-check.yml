@@ -1,4 +1,4 @@
-name: Production
+name: Quality check
 
 on:
   workflow_run:
@@ -14,7 +14,7 @@ on:
 
 jobs:
   quality-assurance:
-    name: 'Production'
+    name: 'Quality check'
     runs-on: ubuntu-latest
 
     env:
@@ -31,8 +31,8 @@ jobs:
         id: init
         run: terraform init
 
-      - name: 'Terraform workspace select or create prod'
-        run:  terraform workspace select prod || terraform workspace new prod
+      - name: 'Terraform workspace select or create dev'
+        run:  terraform workspace select dev || terraform workspace new dev
 
       - name: 'Terraform fmt'
         id: fmt
