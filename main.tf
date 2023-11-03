@@ -20,19 +20,3 @@ output "vm_password" {
   value     = azurerm_key_vault_secret.vm_password.value
   sensitive = true
 }
-
-module "KeyVaultModule" {
-  source = "./KeyVaultModule"
-}
-
-module "NetworkModule"  {
-  source = "./NetworkModule"
-}
-
-module "StorageAccountModule" {
-  source = "./StorageAccountModule"
-}
-
-module "VirtualMachineModule" {
-  source = "./VirtualMachineModule"
-}
