@@ -1,7 +1,10 @@
 name: Production
 
 on:
-  push:
+  workflow_run:
+    workflows: Staging
+    types:
+      - completed
     branches-ignore:
       - 'main'
       - 'dev'
