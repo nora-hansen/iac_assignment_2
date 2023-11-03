@@ -1,7 +1,7 @@
 ###### General variables ######
 variable "base_name" {
   type        = string
-  default     = "nhh"
+  default     = "opter"
   description = "value of the base name"
 }
 

@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "kv" {
-  name                        = "${var.kv_name}${var.base_name}${local.workspace_suffix}${random_string.random_string.result}"
+  name                        = "${var.base_name}${var.kv_name}${local.workspace_suffix}${random_string.random_string.result}"
   location                    = azurerm_resource_group.rg-infra.location
   resource_group_name         = azurerm_resource_group.rg-infra.name
   enabled_for_disk_encryption = true
