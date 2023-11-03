@@ -30,9 +30,6 @@ resource "azurerm_key_vault" "kv" {
 
     tags = local.common_tags
 }
-output "that_sa_name" {
-  value = "${var.sa_accesskey_name}${azurerm_storage_account.sa.name}"
-}
 
 resource "azurerm_key_vault_secret" "sa_accesskey" {
   name         = "${var.sa_accesskey_name}${azurerm_storage_account.sa.name}"

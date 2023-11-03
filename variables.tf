@@ -1,13 +1,13 @@
 ###### General variables ######
 variable "base_name" {
   type        = string
-  default     = "operaterra"
+  default     = "nhh-operaterra"
   description = "value of the base name"
 }
 
 variable "rg_name" {
   type        = string
-  default     = "rg"
+  default     = "nhh-rg"
   description = "Name of the resource group to create"
 }
 
@@ -22,13 +22,13 @@ variable "location" {
 ##########################################
 variable "kv_name" {
   type        = string
-  default     = "kv"
+  default     = "nhh-kv"
   description = "Name of the keyvault to create"
 }
 
 variable "sa_accesskey_name" {
   type        = string
-  default     = "sa-accesskey"
+  default     = "nhh-sa-accesskey"
   description = "Name of the keyvault secret for the storage account access key"
 }
 
@@ -38,13 +38,13 @@ variable "sa_accesskey_name" {
 
 variable "sa_name" {
   type        = string
-  default     = "sa"
+  default     = "nhhsa"
   description = "value of the storage account name"
 }
 
 variable "sc_name" {
   type        = string
-  default     = "sc"
+  default     = "nhhsc"
   description = "value of the storage container name"
 }
 #################################################
@@ -53,19 +53,19 @@ variable "sc_name" {
 
 variable "vnet_name" {
   type        = string
-  default     = "vnet"
+  default     = "nhh-vnet"
   description = "Name of the virtual network to create"
 }
 
 variable "nsg_name" {
   type        = string
-  default     = "nsg"
+  default     = "nhh-nsg"
   description = "Name of the network security group to create"
 }
 
 variable "subnet_name" {
   type        = string
-  default     = "subnet"
+  default     = "nhh-subnet"
   description = "Name of the subnet to create"
 }
 #################################################
@@ -74,13 +74,13 @@ variable "subnet_name" {
 
 variable "vm_nic_name" {
   type        = string
-  default     = "vm-nic"
+  default     = "nhh-vm-nic"
   description = "Name of the network interface to create"
 }
 
 variable "vm_name" {
   type        = string
-  default     = "vm"
+  default     = "nhh-vm"
   description = "Name of the virtual machine to create"
 }
 
@@ -92,7 +92,7 @@ variable "pip_name" {
 
 variable "vm_username" {
   type        = string
-  default     = "demoadmin"
+  default     = "opteradmin"
   description = "Username for the virtual machine"
 }
 
