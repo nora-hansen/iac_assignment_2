@@ -27,9 +27,9 @@ jobs:
         id: init
         run: terraform init
 
-      - name: 'Terraform workspace select or create stage'
+      - name: 'Terraform workspace select or create prod'
         id: select
-        run:  terraform workspace select stage || terraform workspace new stage
+        run:  terraform workspace select prod || terraform workspace new prod
         
       - name: 'Terraform plan'
         id: plan
