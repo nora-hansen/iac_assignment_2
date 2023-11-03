@@ -1,4 +1,4 @@
-name: Development
+name: Quality check
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   quality-assurance:
-    name: 'Development'
+    name: 'Quality check'
     runs-on: ubuntu-latest
 
     env:
