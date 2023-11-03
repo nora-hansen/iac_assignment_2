@@ -14,7 +14,7 @@ terraform {
     resource_group_name  = "nhh-nhh-rg-backend"
     storage_account_name = "nhhsaoperaterrav8mahr6q"
     container_name       = "nhhscoperaterra"
-    key                  = "infra.terraform.tfstate"
+    key                  = "infra-dev.terraform.tfstate"
 
   }
 }
