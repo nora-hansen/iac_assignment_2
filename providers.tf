@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.6.0"
+  required_version = ">= 1.5.0"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -10,12 +10,13 @@ terraform {
       version = "3.5.1"
     }
   }
-  # backend "azurerm" {
-  #   resource_group_name  = "rg-backend-tfstate"
-  #   storage_account_name = "sabetfs3a9npz46p2"
-  #   container_name       = "tfstate"
-  #   key                  = "demo-infra.terraform.tfstate${local.workspace_suffix}"
-  # }
+  backend "azurerm" {
+    resource_group_name  = "nhh-nhh-rg-backend"
+    storage_account_name = "nhhsaoperaterrav8mahr6q"
+    container_name       = "nhhscoperaterra"
+    key                  = "infra.terraform.tfstate"
+
+  }
 }
 
 provider "azurerm" {
