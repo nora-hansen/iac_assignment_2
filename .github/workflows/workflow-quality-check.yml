@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - 'main'
       - 'dev'
-      - 'staging'
+      - 'stage'
       - 'prod'
   workflow_dispatch:
 
