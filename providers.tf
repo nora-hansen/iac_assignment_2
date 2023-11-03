@@ -15,6 +15,7 @@ terraform {
     storage_account_name = "nhhsaoperaterrav8mahr6q"
     container_name       = "nhhscoperaterra"
     key                  = "infra.terraform.tfstate"
+
   }
 }
 
